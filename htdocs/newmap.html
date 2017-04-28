@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Well-Spring-Pond</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+
+  <!-- Top navigation -->
+  <div class="container">
+    <div class="alert alert-success">
+      <h1>Well - Spring - Pond</h1>
+      <hr/>
+      <div id="userMenu">
+        <span>Hello, stranger</span> | <a href="#">Login</a> | <a href="#">Register</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!--New user alert-->
+  <div class="container">
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#newUserAlert">New user alert</button>
+    <div id="newUserAlert" class="alert alert-success alert-dismissable collapse in">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <h3>Welcome, unknown traveler from (geologation)</h3>
+      <p>Welcome to our humble project to catalogue the water sources available to travellers arround the world. Search our
+        database for places to fill your conteen, and join our growing community to add a missing well or spring, get additional
+        information on the water sources, and connect with fellow travelers.</p>
+      <p class="signature">Wishing you a lovely day,</p>
+      <p class="signature">Jerry</p>
+      <p class="signature">the Well-Spring-Pond Team</p>
+    </div>
+  </div>
+
+
+  <!-- Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-lg-6">
+        <!-- table of 10 closest points to you or a user-given location -->
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#closest">Search by location</button>
+        <div id="closest" class="well well-sm collapse in">
+          <div id="closest-nav" class="nav navbar">
+            <span class="navbar-brand"><strong>Water near:</strong> </span>
+            <div>
+              <form class="navbar-form navbar-right">
+                <input type="button" class="btn btn-default" id="myLocationBtn" value="My Location">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="or enter location name">
+                </div>
+                <input type="button" class="btn btn-default" id="SearchLocationBtn" value="Go">
+
+              </form>
+            </div>
+          </div>
+
+          <div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Distance</th>
+                  <th>Type</th>
+                  <th>Coordinates</th>
+                  <th>Name</th>
+                  <th>Near Landmark</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1.5</td>
+                  <td>Spring with Tap</td>
+                  <td>55.628861, 44.423000</td>
+                  <td>Popova Cheshma</td>
+                  <td>Gelemenovo, BG</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>1.5</td>
+                  <td>Spring with Tap</td>
+                  <td>55.628861, 44.423000</td>
+                  <td>Popova Cheshma</td>
+                  <td>Gelemenovo, BG</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>1.5</td>
+                  <td>Spring with Tap</td>
+                  <td>55.628861, 44.423000</td>
+                  <td>Popova Cheshma</td>
+                  <td>Gelemenovo, BG</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>1.5</td>
+                  <td>Spring with Tap</td>
+                  <td>55.628861, 44.423000</td>
+                  <td>Popova Cheshma</td>
+                  <td>Gelemenovo, BG</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>1.5</td>
+                  <td>Spring with Tap</td>
+                  <td>55.628861, 44.423000</td>
+                  <td>Popova Cheshma</td>
+                  <td>Gelemenovo, BG</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>1.5</td>
+                  <td>Spring with Tap</td>
+                  <td>55.628861, 44.423000</td>
+                  <td>Popova Cheshma</td>
+                  <td>Gelemenovo, BG</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recent">Recently added</button>
+        <div id="recent" class="well well-sm collapse in">
+          <h3>Recently added</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Coordinates</th>
+                <th>Name</th>
+                <th>Near Landmark</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Spring with Tap</td>
+                <td><a href="#">55.628861, 44.423000<a></td>
+                <td>Popova Cheshma</td>
+                <td>Gelemenovo, BG</td>
+              </tr>
+              <tr>
+                <td>Spring with Tap</td>
+                <td><a href="#">55.628861, 44.423000<a></td>
+                <td>Popova Cheshma</td>
+                <td>Gelemenovo, BG</td>
+              </tr>
+              <tr>
+                <td>Spring with Tap</td>
+                <td><a href="#">55.628861, 44.423000<a></td>
+                <td>Popova Cheshma</td>
+                <td>Gelemenovo, BG</td>
+              </tr>
+              <tr>
+                <td>Spring with Tap</td>
+                <td><a href="#">55.628861, 44.423000<a></td>
+                <td>Popova Cheshma</td>
+                <td>Gelemenovo, BG</td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="button" class="btn btn-info">Add New</button>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-6">
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mainMap">Map</button>
+        <div id="mainMap" class="well well-sm collapse in"></div>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mapLegend">Map Legend</button>
+        <div id="mapLegend" class="well well-sm collapse in">
+            <table class="table">
+            <thead>
+              <th colspan="4">Legend: </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Icon</td>
+                <td>Free-flowing stream</td>
+                <td>Icon</td>
+                <td>Well</td>                
+              </tr>
+              <tr>
+                <td>Icon</td>
+                <td>Spring w/o tap</td>
+                <td>Icon</td>
+                <td>Water Pump</td>                
+              </tr>
+               <tr>
+                <td>Icon</td>
+                <td>Spring wtih tap</td>
+                <td>Icon</td>
+                <td>Municipal Water</td>                
+              </tr>
+              
+              
+            </tbody>
+          </table>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!--row-->
+  </div>
+  <!--container 1-->
+  <div class="container">
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#objectDetail">Object Detail</button>
+    <div id="objectDetail" class="well well-sm collapse in">
+      <div class="row">
+        <!--details row-->
+        <div id="infoTable" class="col-sm-6 col-lg-6">
+          <table class="table">
+            <thead>
+              <th>#2 Popova Cheshma</th>
+              <th>Lat: 55.628861, Long:44.423000</th>
+              <th><a href="#">Admin Edit</a></th>
+            </thead>
+            <tr>
+              <td>Mineral Spring with Tap</td>
+              <td colspan="2">Near Gelemenovo, Bg</td>
+            </tr>
+            <tr>
+              <td>Availability:</td>
+              <td colspan="2"><span class="avYes">Jan</span>,
+                <span class="avYes">Feb</span>,
+                <span class="avYes">Mar</span>,
+                <span class="avYes">Apr</span>,
+                <span class="avMaybe">May</span>,
+                <span class="avMaybe">Jun</span>,
+                <span class="avNo">Jul</span>,
+                <span class="avNo">Aug</span>,
+                <span class="avNo">Sept</span>,
+                <span class="avYes">Oct</span>,
+                <span class="avYes">Nov</span>,
+                <span class="avYes">Dec</span>,
+                <span class="avYes">Jan</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Water temp:</td>
+              <td colspan="2">16C</td>
+            </tr>
+            <tr>
+              <td>Mineral Content:</td>
+              <td colspan="2">not known</td>
+              
+            </tr>
+            <tr>
+              <td colspan="3">
+                <p>Description:</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, error quia distinctio minima itaque beatae
+                  explicabo vero autem, repudiandae culpa cum laudantium possimus facilis. Aliquid a quod, placeat veritatis
+                  tenetur tempora minima illum molestiae, perferendis cum quasi soluta accusantium vitae at laboriosam optio
+                  libero voluptatem, nobis maiores molestias fugit suscipit architecto? Possimus delectus, quod voluptates
+                  corporis assumenda natus quae minus aliquid cumque temporibus, reiciendis est hic sunt expedita nam! Et
+                  dolor repudiandae, laboriosam tenetur molestiae neque, labore, quaerat fugiat consectetur dolorem ipsa
+                  suscipit ducimus est veniam error explicabo reiciendis magnam odit nemo repellendus ut, culpa perspiciatis.
+                  Similique deserunt, praesentium necessitatibus!:</p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Added by Username on MM-DD-YYYY</td>
+            </tr>
+            <tr>
+              <td colspan="3">Last updated by Username on MM-DD-YYYY</td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="photos" class="col-sm-6 col-lg-6">
+          <img src="./images/objects/cheshma01.jpeg" class="img-responsive img-rounded">
+          <p class="alert alert-default">Today is MM-DD-YYYY. Can you fill your canteen today? Y N</p>
+
+        </div>
+      </div>
+      <!--details row-->
+
+      <div class="row">
+        <!--comments row-->
+        <div id="comments" class="col-sm-12 col-lg-12">
+          <table class="table">
+            <thead>
+              <th colspan="5">Comments: </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Username</td>
+                <td>This water tastes like mud!</td>
+                <td>MM-DD-YYYY</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>My Username</td>
+                <td>This water tastes like mud!</td>
+                <td>MM-DD-YYYY</td>
+                <td>Edit</td>
+                <td>Delete</td>
+              </tr>
+            </tbody>
+          </table>
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" rows="5" width="100%" id="commentText" placeholder="Enter your comment here"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+
+      </div>
+      <!--comments row-->
+
+    </div>
+  </div>
+  <!--container 2-->
+  <!--content-->
+
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Google map integration scripts -->
+  <script src="/js/script.js" defer></script>
+</body>
+
+</html>

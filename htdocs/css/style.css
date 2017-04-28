@@ -1,0 +1,31 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #333;
+    background-color: #fff;
+}
+
+#mainMap {
+  height: 500px;   
+}
+
+#userMenu{
+  text-align: right;
+}
+
+.signature{
+  text-align: right;
+}
+
+.avYes{
+  color: green;
+}
+
+.avMaybe{
+  color: orange;
+}
+
+.avNo{
+  color: red;
+}
