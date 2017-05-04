@@ -34,9 +34,9 @@
 
         public string ImageUrl { get; set; }
 
-        public virtual IEnumerable<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
         
-        public virtual IEnumerable<WaterSourceEdit> Edits { get; set; }
+        public virtual ICollection<WaterSourceEdit> Edits { get; set; }
         
     }
 }
