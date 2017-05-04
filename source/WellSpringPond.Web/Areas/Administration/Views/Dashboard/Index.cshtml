@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@if (!Request.IsAuthenticated)
+{
+    @*@Html.Partial("_AdminLoginPartial")*@
+    @Html.ActionLink("Please login", "Login", "AdminAccount", new { area = "Administration" }, new {})
+
+
+}
+
+else
+{
+    <h4>Welcome to the administration dashboard</h4>
+    <hr/>
+    @Html.ActionLink("List all Water Sources", "WaterSources", "Dashboard", new { area = "Administration" }, new { })
+    @Html.ActionLink("List all Water Sources", "Users", "Dashboard", new { area = "Administration" }, new { })
+
+}

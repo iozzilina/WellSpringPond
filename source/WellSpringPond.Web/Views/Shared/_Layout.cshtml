@@ -12,11 +12,9 @@
     <!-- Top navigation -->
     <div class="container navbar navbar-fixed-top">
         <div class="alert alert-success">
-            @Html.ActionLink("Well-Spring-Pond", "Index", "Home", new { area = "" }, new { @class = "h1" })
-            <hr />
-            @*<div id="userMenu">*@
-               @Html.Partial("_LoginPartial")
-            @*</div>*@
+            @Html.ActionLink("Well-Spring-Pond", "Index", "Home", new {area = ""}, new {@class = "h1"})
+            <hr/>
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
 

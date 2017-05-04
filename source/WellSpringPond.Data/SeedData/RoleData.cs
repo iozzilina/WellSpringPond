@@ -25,6 +25,12 @@
                 rManager.Create(role);
             }
 
+            if (!context.Roles.Any(role => role.Name == RoleNames.ROLE_MODERATOR))
+            {
+                var role = new IdentityRole(RoleNames.ROLE_MODERATOR);
+                rManager.Create(role);
+            }
+
             if (!context.Roles.Any(role => role.Name == RoleNames.ROLE_TRAVELER))
             {
                 var role = new IdentityRole(RoleNames.ROLE_TRAVELER);

@@ -39,6 +39,7 @@
 
             CreateUserwRole(userManager, "IAmTheAdmin@me.com", "Aa!123", RoleNames.ROLE_ADMINISTRATOR);
             CreateUserwRole(userManager, "SuperAdminAmI@me.com", "Aa!123", RoleNames.ROLE_SUPERADMINISTRATOR);
+            CreateUserwRole(userManager, "ModeratorAmI@me.com", "Aa!123", RoleNames.ROLE_MODERATOR);
 
         }
 

@@ -1,23 +1,30 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-    {
-    @Html.AntiForgeryToken()
+    string userName = User.Identity.GetUserName();
+    //string[] userRoles = Roles.GetRolesForUser(User.Identity.GetUserId());
 
-        <div id="userMenu">
-            <span>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </span> | 
-            <span><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></span>
-        </div>
-    }
+    <div id="userMenu">
+        @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+        {
+        @Html.AntiForgeryToken()
+        <span>
+            @Html.ActionLink("Hello " + userName + "!", "Index", "Manage", new {area = ""}, new {title = "Manage"})
+        </span>
+        <span>
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        </span>
+        }
+        | <span>@Html.ActionLink("Administration", "Index", "Dashboard", new {area = "Administration"}, new {})</span>
+
+    </div>
 }
 else
 {
     <div id="userMenu">
-        <span>Hello, stranger</span> | 
-        <span>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</span> |
-        <span>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</span>
+        <span>Hello, stranger</span> |
+        <span>@Html.ActionLink("Register", "Register", "Account", new {area = ""}, new {id = "registerLink"})</span> |
+        <span>@Html.ActionLink("Log in", "Login", "Account", new {area = ""}, new {id = "loginLink"})</span> |
+        <span>@Html.ActionLink("Administration", "Index", "Dashboard", new {area = "Administration"}, new {id = "adminLink"})</span>
     </div>
 }
