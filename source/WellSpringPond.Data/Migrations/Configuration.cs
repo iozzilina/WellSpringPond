@@ -14,6 +14,9 @@ namespace WellSpringPond.Data.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
+            //DBCC CHECKIDENT('[TestTable]', RESEED, 0) // reset identity to 0
+            
+
         protected override void Seed(WellSpringPond.Data.WellSpringPondContext context)
         {
             RoleData.SeedRoles(context);
@@ -21,20 +24,8 @@ namespace WellSpringPond.Data.Migrations
 
             WaterData.SeedWaterSourseTypes(context);
             WaterData.SeedWaterSources(context);
-
-
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            //WaterData.SeedEdits(context);
+            WaterData.SeedComments(context);
         }
     }
 }

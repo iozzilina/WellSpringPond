@@ -26,7 +26,6 @@ namespace WellSpringPond.Data.SeedData
                 );
         }
 
-
         internal static void SeedWaterSources(WellSpringPond.Data.WellSpringPondContext context)
         {
             WaterSource ws01 = new WaterSource()
@@ -187,43 +186,70 @@ namespace WellSpringPond.Data.SeedData
             {
                 new WaterSourceEdit()
                 {
+                    Id = 1,
                     Date = new DateTime(2015, 06, 04),
                     Author = context.Users.FirstOrDefault(u => u.UserName == "User01@me.com")
                 },
                 new WaterSourceEdit()
                 {
+                    Id = 2,
                     Date = new DateTime(2016, 03, 02),
                     Author = context.Users.FirstOrDefault(u => u.UserName == "User02@me.com")
                 },
                 new WaterSourceEdit()
                 {
+                    Id = 3,
                     Date = new DateTime(2016, 03, 01),
                     Author = context.Users.FirstOrDefault(u => u.UserName == "User03@me.com")
                 }
             };
 
+            WaterSource ws01 = context.WaterSources.FirstOrDefault(ws => ws.Id == 1);
+
+            foreach (var waterSourceEdit in edits01)
+            {
+                waterSourceEdit.WaterSource = ws01;
+            }
+
+            foreach (var waterSourceEdit in edits01)
+            {
+                context.WaterSourceEdits.AddOrUpdate(wse => wse.Id, waterSourceEdit);
+            }
 
             List<WaterSourceEdit> edits02 = new List<WaterSourceEdit>()
+                {
+                    new WaterSourceEdit()
+                    {
+                        Id = 4,
+                        Date = new DateTime(2014, 03, 02),
+                        Author = context.Users.FirstOrDefault(u => u.UserName == "User01@me.com")
+                    },
+                    new WaterSourceEdit()
+                    {
+                        Id = 5,
+                        Date = new DateTime(2014, 05, 08),
+                        Author = context.Users.FirstOrDefault(u => u.UserName == "User02@me.com")
+                    },
+                    new WaterSourceEdit()
+                    {
+                        Id = 6,
+                        Date = new DateTime(2016, 03, 05),
+                        Author = context.Users.FirstOrDefault(u => u.UserName == "User03@me.com")
+                    }
+                };
+
+            WaterSource ws02 = context.WaterSources.FirstOrDefault(ws => ws.Id == 2);
+
+            foreach (var waterSourceEdit in edits02)
             {
-                new WaterSourceEdit()
-                {
-                    Date = new DateTime(2014, 03, 02),
-                    Author = context.Users.FirstOrDefault(u => u.UserName == "User01@me.com")
-                },
-                new WaterSourceEdit()
-                {
-                    Date = new DateTime(2014, 05, 08),
-                    Author = context.Users.FirstOrDefault(u => u.UserName == "User02@me.com")
-                },
-                new WaterSourceEdit()
-                {
-                    Date = new DateTime(2016, 03, 05),
-                    Author = context.Users.FirstOrDefault(u => u.UserName == "User03@me.com")
-                }
-            };
+                waterSourceEdit.WaterSource = ws02;
+            }
+
+            foreach (var waterSourceEdit in edits02)
+            {
+                context.WaterSourceEdits.AddOrUpdate(wse => wse.Id, waterSourceEdit);
+            }
         }
-
-
 
         internal static void SeedComments(WellSpringPond.Data.WellSpringPondContext context)
         {
@@ -232,19 +258,31 @@ namespace WellSpringPond.Data.SeedData
              List<Comment> comments01 = new List<Comment>() {
                 new Comment()
                 {
+                    Id = 1,
                     DatePosted = new DateTime(2016,03,02),
                     Author = context.Users.FirstOrDefault(u=>u.UserName=="User01@me.com"),
                     CommentText = "This water is tasty. I will use this place often."
                 },
                 new Comment()
                 {
+                    Id = 2,
                     DatePosted = new DateTime(2016,05,02),
                     Author = context.Users.FirstOrDefault(u=>u.UserName=="User01@me.com"),
                     CommentText = "Nonsence! it tastes horrible!"
                 }
             };
             
+            WaterSource ws01 = context.WaterSources.FirstOrDefault(ws => ws.Id == 1);
+
+            foreach (var comment in comments01)
+            {
+                comment.WaterSource = ws01;
+            }
+
+            foreach (var comment in comments01)
+            {
+                context.Comments.AddOrUpdate(c=>c.Id, comment);
+            }
         }
-        
     }
 }
