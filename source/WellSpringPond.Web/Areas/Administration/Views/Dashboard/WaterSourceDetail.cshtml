@@ -1,0 +1,116 @@
+﻿@model WellSpringPond.Models.ViewModels.WaterSources.WaterSourcesAdminDataVm
+
+
+@{
+    ViewBag.Title = "Water Source Detail for admin dashboard";
+}
+
+<h2>WaterSourceDetail</h2>
+
+<div class="container">
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#objectDetail">Object Detail</button>
+    <div id="objectDetail" class="well well-sm collapse in">
+        <div class="row">
+            <!--details row-->
+            <div id="infoTable" class="col-sm-6 col-lg-6">
+                <table class="table">
+                    <thead>
+                    <th>@Html.DisplayForModel(Model.Id) - @Html.DisplayForModel(Model.Name)a</th>
+                    <th><p>lat:@Html.DisplayForModel(vm.Location.Latitude)</p>
+                    <p>long:@Html.DisplayForModel(vm.Location.Longtitude)</p>
+                    <p>alt:@Html.DisplayForModel(vm.Location.Altitude)</p></th>
+                    <th><a href="#">Admin Edit</a></th>
+                    </thead>
+                    <tr>
+                        <td>@Html.DisplayForModel(Model.WaterSourceType)</td>
+                        <td colspan="2">@Html.DisplayForModel(Model.LandmarkName), @Html.DisplayForModel(Model.LandmarkCountry)</td>
+                    </tr>
+                    <tr>
+                        <td>Availability:</td>
+                        <td colspan="2">
+                            <span class="Yes">Jan</span>,
+                            <span class="Yes">Feb</span>,
+                            <span class="Yes">Mar</span>,
+                            <span class="Yes">Apr</span>,
+                            <span class="Maybe">May</span>,
+                            <span class="Maybe">Jun</span>,
+                            <span class="No">Jul</span>,
+                            <span class="No">Aug</span>,
+                            <span class="No">Sept</span>,
+                            <span class="Yes">Oct</span>,
+                            <span class="Yes">Nov</span>,
+                            <span class="Yes">Dec</span>,
+                            <span class="Yes">Jan</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Water temp:</td>
+                        <td colspan="2">16C</td>
+                    </tr>
+                    <tr>
+                        <td>Mineral Content:</td>
+                        <td colspan="2">not known</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <p>Description:</p>
+                            <p>
+                                @Html.DisplayForModel(Model.Description)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Added by Username on MM-DD-YYYY</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Last updated by Username on MM-DD-YYYY</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="photos" class="col-sm-6 col-lg-6">
+                <img src="./images/objects/cheshma01.jpeg" class="img-responsive img-rounded">
+                <p class="alert alert-default">Today is MM-DD-YYYY. Can you fill your canteen today? Y N</p>
+
+            </div>
+        </div>
+        <!--details row-->
+
+        <div class="row">
+            <!--comments row-->
+            <div id="comments" class="col-sm-12 col-lg-12">
+                <table class="table">
+                    <thead>
+                    <th colspan="5">Comments: </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Username</td>
+                            <td>This water tastes like mud!</td>
+                            <td>MM-DD-YYYY</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>My Username</td>
+                            <td>This water tastes like mud!</td>
+                            <td>MM-DD-YYYY</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" width="100%" id="commentText" placeholder="Enter your comment here"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+
+        </div>
+        <!--comments row-->
+
+    </div>
+</div>

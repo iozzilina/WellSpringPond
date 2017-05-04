@@ -221,6 +221,7 @@
     <Content Include="Areas\Administration\Views\AdminAccount\Login.cshtml" />
     <Content Include="Areas\Administration\Views\Dashboard\WaterSources.cshtml" />
     <Content Include="Areas\Administration\Views\Dashboard\Users.cshtml" />
+    <Content Include="Areas\Administration\Views\Dashboard\WaterSourceDetail.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -290,6 +291,10 @@
     <ProjectReference Include="..\WellSpringPond.Models\WellSpringPond.Models.csproj">
       <Project>{4EF9EB22-9F63-4C1B-8D44-DBEE58984C12}</Project>
       <Name>WellSpringPond.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WellSpringPond.Services\WellSpringPond.Services.csproj">
+      <Project>{7D95A435-0DBA-43D8-AF48-6146D75D8A4D}</Project>
+      <Name>WellSpringPond.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

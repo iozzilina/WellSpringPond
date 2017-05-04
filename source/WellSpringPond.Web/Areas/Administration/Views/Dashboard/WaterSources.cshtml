@@ -1,7 +1,40 @@
-﻿
-@{
-    ViewBag.Title = "WaterSources";
-}
+﻿@model IEnumerable<WellSpringPond.Models.ViewModels.WaterSources.WaterSourcesBasicDataVM>
 
-<h2>WaterSources</h2>
+    @{
+        ViewBag.Title = "WaterSources";
+    }
 
+    <h2>WaterSources</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Distance</th>
+                <th>Type</th>
+                <th>Coordinates</th>
+                <th>Name</th>
+                <th>Near Landmark</th>
+            </tr>
+        </thead>
+
+        <tbody>
+           
+            @foreach (var vm in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayForModel(vm.Id)</td>
+                    <td>@Html.DisplayForModel(vm.DistanceFromSearchLocation)</td>
+                    <td>@Html.DisplayForModel(vm.WaterSourceType)</td>
+                    <td>
+                        <p>lat:@Html.DisplayForModel(vm.Location.Latitude)</p>
+                        <p>long:@Html.DisplayForModel(vm.Location.Longtitude)</p>
+                        <p>alt:@Html.DisplayForModel(vm.Location.Altitude)</p>
+                    </td>
+                    <td>@Html.DisplayForModel(vm.Name)</td>
+                    <td>@Html.DisplayForModel(vm.LandmarkName)</td>
+                </tr>
+            }
+
+        </tbody>
+</table>

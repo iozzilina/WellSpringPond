@@ -41,14 +41,14 @@ textarea {
   text-align: right;
 }
 
-.avYes{
+.Yes{
   color: green;
 }
 
-.avMaybe{
+.Maybe{
   color: orange;
 }
 
-.avNo{
+.No{
   color: red;
 }

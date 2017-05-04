@@ -10,9 +10,6 @@
         }
         
        protected WellSpringPondContext Context { get; }
-
-
-
         
     }
 }

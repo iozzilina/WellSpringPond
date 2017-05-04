@@ -2,7 +2,7 @@
 {
     using WellSpringPond.Models.EntityModels;
 
-    public class WaterSourcesBasicDataVm
+    public class WaterSourcesPublicDataVm
     {
         public int Id { get; set; }
 
@@ -11,6 +11,8 @@
         public WaterSourceType WaterSourceType { get; set; }
 
         public Geolocation Location { get; set; }
+
+        public string Description { get; set; }
 
         //eventually get from Google API
         public string LandmarkName { get; set; }
