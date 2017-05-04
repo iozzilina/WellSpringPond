@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNet.Identity
+@if (!Request.IsAuthenticated)
+{
+    
+    <div id="newUserAlert" class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <h3>Welcome, unknown traveler from (geologation)</h3>
+        <p>
+            Welcome to our humble project to catalogue the water sources available to travellers arround the world. Search our
+            database for places to fill your conteen, and join our growing community to add a missing well or spring, get additional
+            information on the water sources, and connect with fellow travelers.
+        </p>
+        <p class="signature">Wishing you a lovely day,</p>
+        <p class="signature">Jerry</p>
+        <p class="signature">the Well-Spring-Pond Team</p>
+    </div>
+}
+

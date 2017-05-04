@@ -24,10 +24,12 @@ namespace WellSpringPond.Data
         public virtual DbSet<WaterSourceEdit> WaterSourceEdits { get; set; }
         public virtual DbSet<Availability> Availabilities { get; set; }
         public virtual DbSet<Geolocation> Geolocations { get; set; }
-       
+        public virtual DbSet<UserLocation> UserLocations { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new GeolocationConfiguration());
+            modelBuilder.Configurations.Add(new UserLocationConfiguration());
 
             // keep this for Authorization module
             base.OnModelCreating(modelBuilder);

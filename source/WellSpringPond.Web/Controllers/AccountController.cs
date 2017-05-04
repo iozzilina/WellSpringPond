@@ -153,9 +153,10 @@ namespace WellSpringPond.Web.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                //this.UserManager.AddToRole(user.Id, "Traveler");
+                
                 if (result.Succeeded)
                 {
+                    this.UserManager.AddToRole(user.Id, RoleNames.ROLE_TRAVELER);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

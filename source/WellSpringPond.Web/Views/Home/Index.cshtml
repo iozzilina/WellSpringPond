@@ -2,11 +2,171 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@Html.Partial("_UnknownVisitorPartial")
+
+
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <!-- table of 10 closest points to you or a user-given location -->
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#closest">Search by location</button>
+        <div id="closest" class="well well-sm collapse in">
+            <div id="closest-nav" class="nav navbar">
+                <span class="navbar-brand"><strong>Water near:</strong> </span>
+                <div>
+                    <form class="navbar-form navbar-right">
+                        <input type="button" class="btn btn-default" id="myLocationBtn" value="My Location">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="or enter location name">
+                        </div>
+                        <input type="button" class="btn btn-default" id="SearchLocationBtn" value="Go">
+
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Distance</th>
+                            <th>Type</th>
+                            <th>Coordinates</th>
+                            <th>Name</th>
+                            <th>Near Landmark</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>1.5</td>
+                            <td>Spring with Tap</td>
+                            <td>55.628861, 44.423000</td>
+                            <td>Popova Cheshma</td>
+                            <td>Gelemenovo, BG</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>1.5</td>
+                            <td>Spring with Tap</td>
+                            <td>55.628861, 44.423000</td>
+                            <td>Popova Cheshma</td>
+                            <td>Gelemenovo, BG</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>1.5</td>
+                            <td>Spring with Tap</td>
+                            <td>55.628861, 44.423000</td>
+                            <td>Popova Cheshma</td>
+                            <td>Gelemenovo, BG</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>1.5</td>
+                            <td>Spring with Tap</td>
+                            <td>55.628861, 44.423000</td>
+                            <td>Popova Cheshma</td>
+                            <td>Gelemenovo, BG</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>1.5</td>
+                            <td>Spring with Tap</td>
+                            <td>55.628861, 44.423000</td>
+                            <td>Popova Cheshma</td>
+                            <td>Gelemenovo, BG</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>1.5</td>
+                            <td>Spring with Tap</td>
+                            <td>55.628861, 44.423000</td>
+                            <td>Popova Cheshma</td>
+                            <td>Gelemenovo, BG</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recent">Recently added</button>
+        <div id="recent" class="well well-sm collapse in">
+            <h3>Recently added</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Coordinates</th>
+                        <th>Name</th>
+                        <th>Near Landmark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Spring with Tap</td>
+                        <td><a href="#">55.628861, 44.423000</a></td>
+                        <td>Popova Cheshma</td>
+                        <td>Gelemenovo, BG</td>
+                    </tr>
+                    <tr>
+                        <td>Spring with Tap</td>
+                        <td><a href="#">55.628861, 44.423000</a></td>
+                        <td>Popova Cheshma</td>
+                        <td>Gelemenovo, BG</td>
+                    </tr>
+                    <tr>
+                        <td>Spring with Tap</td>
+                        <td><a href="#">55.628861, 44.423000</a></td>
+                        <td>Popova Cheshma</td>
+                        <td>Gelemenovo, BG</td>
+                    </tr>
+                    <tr>
+                        <td>Spring with Tap</td>
+                        <td><a href="#">55.628861, 44.423000</a></td>
+                        <td>Popova Cheshma</td>
+                        <td>Gelemenovo, BG</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-info">Add New</button>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-6">
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mainMap">Map</button>
+        <div id="mainMap" class="well well-sm collapse in"></div>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mapLegend">Map Legend</button>
+        <div id="mapLegend" class="well well-sm collapse in">
+            <table class="table">
+                <thead>
+                <th colspan="4">Legend: </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Icon</td>
+                        <td>Free-flowing stream</td>
+                        <td>Icon</td>
+                        <td>Well</td>
+                    </tr>
+                    <tr>
+                        <td>Icon</td>
+                        <td>Spring w/o tap</td>
+                        <td>Icon</td>
+                        <td>Water Pump</td>
+                    </tr>
+                    <tr>
+                        <td>Icon</td>
+                        <td>Spring wtih tap</td>
+                        <td>Icon</td>
+                        <td>Municipal Water</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+<!--row-->
 
 <div class="row">
     <div class="col-md-4">

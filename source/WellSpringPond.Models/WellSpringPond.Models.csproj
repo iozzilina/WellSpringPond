@@ -97,6 +97,7 @@
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Availability.cs" />
     <Compile Include="EntityModels\Comment.cs" />
+    <Compile Include="EntityModels\UserLocation.cs" />
     <Compile Include="EntityModels\RoleNames.cs" />
     <Compile Include="EntityModels\WaterSourceEdit.cs" />
     <Compile Include="EntityModels\YesMaybeNo.cs" />
