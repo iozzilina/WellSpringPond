@@ -9,16 +9,7 @@
 
     public class WaterSourceService : Service
     {
-        public WaterSourceService()
-        {
-            
-        }
-
-        private WaterSourceService(WellSpringPondContext context) : base(context)
-        {
-        }
-
-
+      
         public IEnumerable<WaterSourcesBasicDataVm> GetWsBasicData()
         {
             IEnumerable<WaterSource> waters = this.Context.WaterSources;
@@ -44,5 +35,7 @@
             return vm;
 
         }
+
+        
     }
 }

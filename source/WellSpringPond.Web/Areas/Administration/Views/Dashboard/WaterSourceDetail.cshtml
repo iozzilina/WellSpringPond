@@ -15,12 +15,15 @@
             <div id="infoTable" class="col-sm-6 col-lg-6">
                 <table class="table">
                     <thead>
-                    <th>@Html.DisplayForModel(Model.Id) - @Html.DisplayForModel(Model.Name)a</th>
-                    <th><p>lat:@Html.DisplayForModel(vm.Location.Latitude)</p>
-                    <p>long:@Html.DisplayForModel(vm.Location.Longtitude)</p>
-                    <p>alt:@Html.DisplayForModel(vm.Location.Altitude)</p></th>
-                    <th><a href="#">Admin Edit</a></th>
-                    </thead>
+                        <tr>
+                            <th>@Html.DisplayForModel(Model.Id) - @Html.DisplayForModel(Model.Name)a</th>
+                            <th>
+                                <p>lat:@Html.DisplayForModel(Model.Location.Latitude)</p>
+                                <p>long:@Html.DisplayForModel(Model.Location.Longtitude)</p>
+                                <p>alt:@Html.DisplayForModel(Model.Location.Altitude)</p>
+                            </th>
+                            <th><a href="#">Admin Edit</a></th>
+                        </tr></thead>
                     <tr>
                         <td>@Html.DisplayForModel(Model.WaterSourceType)</td>
                         <td colspan="2">@Html.DisplayForModel(Model.LandmarkName), @Html.DisplayForModel(Model.LandmarkCountry)</td>
@@ -82,7 +85,9 @@
             <div id="comments" class="col-sm-12 col-lg-12">
                 <table class="table">
                     <thead>
-                    <th colspan="5">Comments: </th>
+                    <tr>
+                        <th colspan="5">Comments: </th>
+                    </tr>
                     </thead>
                     <tbody>
                         <tr>

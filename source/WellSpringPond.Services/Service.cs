@@ -4,9 +4,9 @@
 
     public abstract class Service
     {
-        protected Service(WellSpringPondContext context)
+        protected Service()
         {
-            this.Context = context;
+            this.Context = new WellSpringPondContext();
         }
         
        protected WellSpringPondContext Context { get; }

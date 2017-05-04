@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WellSpringPond.Models.ViewModels.WaterSources.WaterSourcesBasicDataVM>
+﻿@model IEnumerable<WellSpringPond.Models.ViewModels.WaterSources.WaterSourcesBasicDataVm>
 
     @{
         ViewBag.Title = "WaterSources";
@@ -23,7 +23,7 @@
             @foreach (var vm in Model)
             {
                 <tr>
-                    <td>@Html.DisplayForModel(vm.Id)</td>
+                    <td>@Html.DisplayForModel(vm.Id.ToString())</td>
                     <td>@Html.DisplayForModel(vm.DistanceFromSearchLocation)</td>
                     <td>@Html.DisplayForModel(vm.WaterSourceType)</td>
                     <td>
@@ -33,6 +33,7 @@
                     </td>
                     <td>@Html.DisplayForModel(vm.Name)</td>
                     <td>@Html.DisplayForModel(vm.LandmarkName)</td>
+                    <td>@Html.ActionLink("Details","WaterSourceDetail","Dashboard",new {id = vm.Id}, new {})</td>
                 </tr>
             }
 
