@@ -219,9 +219,12 @@
     <Content Include="Areas\Administration\Views\AdminAccount\ResetPassword.cshtml" />
     <Content Include="Areas\Administration\Views\AdminAccount\ResetPasswordConfirmation.cshtml" />
     <Content Include="Areas\Administration\Views\AdminAccount\Login.cshtml" />
-    <Content Include="Areas\Administration\Views\Dashboard\WaterSources.cshtml" />
-    <Content Include="Areas\Administration\Views\Dashboard\Users.cshtml" />
+    <Content Include="Areas\Administration\Views\Dashboard\WaterSources-1.cshtml" />
     <Content Include="Areas\Administration\Views\Dashboard\WaterSourceDetail.cshtml" />
+    <Content Include="Areas\Administration\Views\Dashboard\UserList.cshtml" />
+    <Content Include="Areas\Administration\Views\Dashboard\WaterSources.cshtml" />
+    <Content Include="Areas\Administration\Views\Dashboard\WaterSourceSimpleDetail.cshtml" />
+    <Content Include="Areas\Administration\Views\Dashboard\WaterSourceSimpleEdit.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -303,7 +306,9 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Shared\DisplayTemplates\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

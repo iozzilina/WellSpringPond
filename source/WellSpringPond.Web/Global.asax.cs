@@ -5,6 +5,7 @@ using System.Web.Routing;
 
 namespace WellSpringPond.Web
 {
+    using System.Collections.Generic;
     using AutoMapper;
     using WellSpringPond.Models.EntityModels;
     using WellSpringPond.Models.ViewModels.WaterSources;
@@ -28,6 +29,7 @@ namespace WellSpringPond.Web
             Mapper.Initialize(expression =>
             {
                 expression.CreateMap<WaterSource, WaterSourcesBasicDataVm>();
+                //expression.CreateMap<IEnumerable<WaterSource>, IEnumerable<WaterSourcesBasicDataVm>>();
                 expression.CreateMap<WaterSource, WaterSourcesAdminDataVm>();
                 expression.CreateMap<WaterSource, WaterSourcesPublicDataVm>();
             });

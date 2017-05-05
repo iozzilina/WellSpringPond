@@ -1,41 +1,68 @@
 ﻿@model IEnumerable<WellSpringPond.Models.ViewModels.WaterSources.WaterSourcesBasicDataVm>
 
-    @{
-        ViewBag.Title = "WaterSources";
-    }
+@{
+    ViewBag.Title = "WaterSources";
+}
 
-    <h2>WaterSources</h2>
+<h2>WaterSources</h2>
 
-    <table class="table table-striped">
-        <thead>
+<p>
+    @Html.ActionLink("Create New", "CreateWaterSource")
+</p>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DistanceFromSearchLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WaterSourceType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Near
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>#</th>
-                <th>Distance</th>
-                <th>Type</th>
-                <th>Coordinates</th>
-                <th>Name</th>
-                <th>Near Landmark</th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DistanceFromSearchLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WaterSourceType.DisplayName)
+                </td>
+                <td>
+                    <p>lat:@Html.DisplayFor(modelItem => item.Location.Latitude)</p>
+                    <p>long:@Html.DisplayFor(modelItem => item.Location.Longtitude)</p>
+                    <p>alt:@Html.DisplayFor(modelItem => item.Location.Altitude)</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LandmarkName), @Html.DisplayFor(modelItem => item.LandmarkCountry)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditWaterSource", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "WaterSourceDetail", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteWaterSource", new { id = item.Id })
+                </td>
             </tr>
-        </thead>
-
-        <tbody>
-           
-            @foreach (var vm in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayForModel(vm.Id.ToString())</td>
-                    <td>@Html.DisplayForModel(vm.DistanceFromSearchLocation)</td>
-                    <td>@Html.DisplayForModel(vm.WaterSourceType)</td>
-                    <td>
-                        <p>lat:@Html.DisplayForModel(vm.Location.Latitude)</p>
-                        <p>long:@Html.DisplayForModel(vm.Location.Longtitude)</p>
-                        <p>alt:@Html.DisplayForModel(vm.Location.Altitude)</p>
-                    </td>
-                    <td>@Html.DisplayForModel(vm.Name)</td>
-                    <td>@Html.DisplayForModel(vm.LandmarkName)</td>
-                    <td>@Html.ActionLink("Details","WaterSourceDetail","Dashboard",new {id = vm.Id}, new {})</td>
-                </tr>
-            }
-
-        </tbody>
+        }
+    </tbody>
 </table>

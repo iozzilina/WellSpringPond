@@ -22,9 +22,9 @@
         public virtual WaterSourceType WaterSourceType{ get; set; }
 
         //lat / long/ alt
-        public Geolocation Location { get; set; }
+        public virtual Geolocation Location { get; set; }
         
-        public Availability Availability { get; set; }
+        public virtual Availability Availability { get; set; }
 
         public decimal Temperature { get; set; }
 

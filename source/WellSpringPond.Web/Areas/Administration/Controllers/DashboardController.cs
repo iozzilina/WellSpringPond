@@ -2,19 +2,24 @@
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
+    using System.Web.UI;
+    using WellSpringPond.Models.ViewModels.Users;
     using WellSpringPond.Web.Attributes;
     using WellSpringPond.Models.ViewModels.WaterSources;
     using WellSpringPond.Services;
 
     //[AdminAuthorize(Roles = "Administrator")] //breaks the routing
-    //[RouteArea("Administration/Dashboard")]
+    //[RouteArea("administration")]
+    //[RoutePrefix("dashboard")]
     public class DashboardController : Controller
     {
-        private WaterSourceService service;
+        private WaterSourceService waterService;
+        private UserService userService;
 
         public DashboardController()
         {
-            this.service = new WaterSourceService();
+            this.waterService = new WaterSourceService();
+            this.userService = new UserService();
         }
 
         // GET: Administration/Dashboard
@@ -26,16 +31,16 @@
         // GET: Administration/Dashboard/WaterSources/All
         public ActionResult WaterSources()
         {
-            IEnumerable<WaterSourcesBasicDataVm> waters = this.service.GetWsBasicData();
+            IEnumerable<WaterSourcesBasicDataVm> waters = this.waterService.GetWsBasicData();
             return this.View(waters);
         }
 
 
         // GET: Administration/Dashboard/WaterSources/1
-        [HttpGet, Route("watersources/{id}")]
+        [HttpGet]
         public ActionResult WaterSourceDetail(int id)
         {
-            WaterSourcesAdminDataVm vm = this.service.GetWsAdminData(id);
+            WaterSourcesAdminDataVm vm = this.waterService.GetWsAdminData(id);
 
             if (vm == null)
             {
@@ -46,10 +51,12 @@
         }
 
         // GET: Administration/Dashboard/Users/All
-        public ActionResult Users()
+        [HttpGet]
+        public ActionResult UserList()
         {
-
-            return this.View();
+            IEnumerable<AdminUserBasicDataVm> vms = this.userService.GetAllUserForAdminList();
+            
+            return this.View(vms);
         }
         
     }

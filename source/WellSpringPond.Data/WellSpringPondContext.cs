@@ -34,5 +34,6 @@ namespace WellSpringPond.Data
             // keep this for Authorization module
             base.OnModelCreating(modelBuilder);
         }
+        
     }
 }

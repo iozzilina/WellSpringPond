@@ -16,17 +16,17 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>@Html.DisplayForModel(Model.Id) - @Html.DisplayForModel(Model.Name)a</th>
+                            <th>@Html.DisplayFor(model => model.Id) - @Html.DisplayFor(model => Model.Name)a</th>
                             <th>
-                                <p>lat:@Html.DisplayForModel(Model.Location.Latitude)</p>
-                                <p>long:@Html.DisplayForModel(Model.Location.Longtitude)</p>
-                                <p>alt:@Html.DisplayForModel(Model.Location.Altitude)</p>
+                                <p>lat:</p>
+                                <p>long:</p>
+                                <p>alt:</p>
                             </th>
                             <th><a href="#">Admin Edit</a></th>
                         </tr></thead>
                     <tr>
                         <td>@Html.DisplayForModel(Model.WaterSourceType)</td>
-                        <td colspan="2">@Html.DisplayForModel(Model.LandmarkName), @Html.DisplayForModel(Model.LandmarkCountry)</td>
+                        <td colspan="2">Gelemenovo, BGC</td>
                     </tr>
                     <tr>
                         <td>Availability:</td>
