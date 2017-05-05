@@ -22,5 +22,8 @@
         //eventually get from Google API
         [Display(Name = "Distance")]
         public decimal DistanceFromSearchLocation { get; set; }
+
+        [Display(Name = "Drinkable")]
+        public bool IsSafeToDrink { get; set; }
     }
 }

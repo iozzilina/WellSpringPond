@@ -184,10 +184,13 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminAccountController.cs" />
     <Compile Include="Areas\Administration\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Test\Controllers\WaterSourcesController.cs" />
+    <Compile Include="Areas\Test\TestAreaRegistration.cs" />
     <Compile Include="Attributes\AdminAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WaterSourceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,6 +228,14 @@
     <Content Include="Areas\Administration\Views\Dashboard\WaterSources.cshtml" />
     <Content Include="Areas\Administration\Views\Dashboard\WaterSourceSimpleDetail.cshtml" />
     <Content Include="Areas\Administration\Views\Dashboard\WaterSourceSimpleEdit.cshtml" />
+    <Content Include="Areas\Test\Views\web.config" />
+    <Content Include="Areas\Test\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Test\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Test\Views\WaterSources\Create.cshtml" />
+    <Content Include="Areas\Test\Views\WaterSources\Delete.cshtml" />
+    <Content Include="Areas\Test\Views\WaterSources\Details.cshtml" />
+    <Content Include="Areas\Test\Views\WaterSources\Edit.cshtml" />
+    <Content Include="Areas\Test\Views\WaterSources\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -285,6 +296,7 @@
     <Content Include="Views\Shared\_UnknownVisitorPartial.cshtml" />
     <Content Include="Scripts\wsp.gmap.js" />
     <Content Include="Views\Shared\Unauthorized.cshtml" />
+    <Content Include="Views\WaterSource\ShortList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WellSpringPond.Data\WellSpringPond.Data.csproj">
@@ -307,6 +319,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Test\Models\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <PropertyGroup>

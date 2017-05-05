@@ -4,13 +4,12 @@
 
 @Html.Partial("_UnknownVisitorPartial")
 
+    <div class="row">
+        <div class="col-sm-6 col-lg-6">
+            <!-- table of 10 closest points to you or a user-given location -->
 
-<div class="row">
-    <div class="col-sm-6 col-lg-6">
-        <!-- table of 10 closest points to you or a user-given location -->
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#closest">Search by location</button>
-        <div id="closest" class="well well-sm collapse in">
-            <div id="closest-nav" class="nav navbar">
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#closest">Search by location</button>
+            <div id="closest" class="well well-sm collapse in">
                 <span class="navbar-brand"><strong>Water near:</strong> </span>
                 <div>
                     <form class="navbar-form navbar-right">
@@ -19,91 +18,26 @@
                             <input type="text" class="form-control" placeholder="or enter location name">
                         </div>
                         <input type="button" class="btn btn-default" id="SearchLocationBtn" value="Go">
-
                     </form>
+                </div>
+                <div>
+                    @Html.Action("ShortList", "WaterSource")
                 </div>
             </div>
 
-            <div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recent">Recently added</button>
+            <div id="recent" class="well well-sm collapse in">
+                <h3>Recently added</h3>
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Distance</th>
-                            <th>Type</th>
-                            <th>Coordinates</th>
-                            <th>Name</th>
-                            <th>Near Landmark</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>1.5</td>
-                            <td>Spring with Tap</td>
-                            <td>55.628861, 44.423000</td>
-                            <td>Popova Cheshma</td>
-                            <td>Gelemenovo, BG</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>1.5</td>
-                            <td>Spring with Tap</td>
-                            <td>55.628861, 44.423000</td>
-                            <td>Popova Cheshma</td>
-                            <td>Gelemenovo, BG</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>1.5</td>
-                            <td>Spring with Tap</td>
-                            <td>55.628861, 44.423000</td>
-                            <td>Popova Cheshma</td>
-                            <td>Gelemenovo, BG</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>1.5</td>
-                            <td>Spring with Tap</td>
-                            <td>55.628861, 44.423000</td>
-                            <td>Popova Cheshma</td>
-                            <td>Gelemenovo, BG</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>1.5</td>
-                            <td>Spring with Tap</td>
-                            <td>55.628861, 44.423000</td>
-                            <td>Popova Cheshma</td>
-                            <td>Gelemenovo, BG</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>1.5</td>
-                            <td>Spring with Tap</td>
-                            <td>55.628861, 44.423000</td>
-                            <td>Popova Cheshma</td>
-                            <td>Gelemenovo, BG</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recent">Recently added</button>
-        <div id="recent" class="well well-sm collapse in">
-            <h3>Recently added</h3>
-            <table class="table table-striped">
-                <thead>
                     <tr>
                         <th>Type</th>
                         <th>Coordinates</th>
                         <th>Name</th>
                         <th>Near Landmark</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>Spring with Tap</td>
                         <td><a href="#">55.628861, 44.423000</a></td>
@@ -128,21 +62,25 @@
                         <td>Popova Cheshma</td>
                         <td>Gelemenovo, BG</td>
                     </tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-info">Add New</button>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-info">Add New</button>
+            </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-lg-6">
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mainMap">Map</button>
-        <div id="mainMap" class="well well-sm collapse in"></div>
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mapLegend">Map Legend</button>
-        <div id="mapLegend" class="well well-sm collapse in">
-            <table class="table">
-                <thead>
-                <th colspan="4">Legend: </th>
-                </thead>
-                <tbody>
+
+        <div class="col-sm-6 col-lg-6">
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mainMap">Map</button>
+            <div id="mainMap" class="well well-sm collapse in"></div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mapLegend">Map Legend</button>
+            <div id="mapLegend" class="well well-sm collapse in">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th colspan="4">Legend: </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
                     <tr>
                         <td>Icon</td>
                         <td>Free-flowing stream</td>
@@ -161,31 +99,9 @@
                         <td>Icon</td>
                         <td>Municipal Water</td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-<!--row-->
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    <!--row-->

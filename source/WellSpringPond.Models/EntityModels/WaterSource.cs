@@ -1,9 +1,6 @@
 ﻿namespace WellSpringPond.Models.EntityModels
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Threading;
 
     public class WaterSource
     {
@@ -29,6 +26,8 @@
         public decimal Temperature { get; set; }
 
         public string MineralContent { get; set; }
+
+        public bool IsSafeToDrink { get; set; }
 
         public string Description { get; set; }
 

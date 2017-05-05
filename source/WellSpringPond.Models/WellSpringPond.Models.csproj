@@ -94,7 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindingModels\WaterSourceCreateBM.cs" />
+    <Compile Include="BindingModels\WaterSourceShortCreateBm.cs" />
     <Compile Include="BindingModels\WaterSourceModEditBM.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Availability.cs" />

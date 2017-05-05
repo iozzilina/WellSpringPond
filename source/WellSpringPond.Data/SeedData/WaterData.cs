@@ -34,7 +34,8 @@ namespace WellSpringPond.Data.SeedData
                 Name = "Popova Cheshma",
                 WaterSourceType = context.WaterSourceTypes.FirstOrDefault(t => t.Id == 3),
                 Location = new Geolocation() {Latitude = 55.231223M, Longtitude = 44.212321M, Altitude = 432M},
-                MineralContent = "Unknown"
+                MineralContent = "Unknown",
+                IsSafeToDrink = true
             };
 
             WaterSource ws02 = new WaterSource()
@@ -44,6 +45,7 @@ namespace WellSpringPond.Data.SeedData
                 WaterSourceType = context.WaterSourceTypes.FirstOrDefault(t => t.Id == 1),
                 Location = new Geolocation() {Latitude = 55.251223M, Longtitude = 44.222321M, Altitude = 132M},
                 MineralContent = "Unknown",
+                IsSafeToDrink = true,
                 Availability =
                     new Availability()
                     {
@@ -60,7 +62,7 @@ namespace WellSpringPond.Data.SeedData
                         Oct = YesMaybeNo.No,
                         Nov = YesMaybeNo.No,
                         Dec = YesMaybeNo.Maybe
-                    }
+                    },
             };
 
             WaterSource ws03 = new WaterSource()
@@ -70,6 +72,7 @@ namespace WellSpringPond.Data.SeedData
                 WaterSourceType = context.WaterSourceTypes.FirstOrDefault(t => t.Id == 4),
                 Location = new Geolocation() { Latitude = 55.312223M, Longtitude = 44.312321M, Altitude = 232M },
                 MineralContent = "Unknown",
+                IsSafeToDrink = false,
                 Availability =
                     new Availability()
                     {
@@ -97,6 +100,7 @@ namespace WellSpringPond.Data.SeedData
                 WaterSourceType = context.WaterSourceTypes.FirstOrDefault(t => t.Id == 5),
                 Location = new Geolocation() { Latitude = 55.231223M, Longtitude = 44.212321M, Altitude = 432M },
                 MineralContent = "Minty stuff!",
+                IsSafeToDrink = false,
                 Description = "This water is very refreshing!",
                 Availability =
                     new Availability()
@@ -124,6 +128,7 @@ namespace WellSpringPond.Data.SeedData
                 WaterSourceType= context.WaterSourceTypes.FirstOrDefault(t => t.Id == 6),
                 Location = new Geolocation() { Latitude = 55.231223M, Longtitude = 44.212321M, Altitude = 432M },
                 MineralContent = "Uranium",
+                IsSafeToDrink = false,
                 Availability =
                     new Availability()
                     {
@@ -150,6 +155,7 @@ namespace WellSpringPond.Data.SeedData
                 WaterSourceType = context.WaterSourceTypes.FirstOrDefault(t => t.Id == 2),
                 Location = new Geolocation() { Latitude = 55.231223M, Longtitude = 44.212321M, Altitude = 432M },
                 MineralContent = "Sulpher",
+                IsSafeToDrink = false,
                 Availability =
                     new Availability()
                     {

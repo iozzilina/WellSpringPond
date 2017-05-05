@@ -15,9 +15,7 @@
             IEnumerable<WaterSource> waters = this.Context.WaterSources;
 
             HashSet<WaterSourcesBasicDataVm> vms = new HashSet<WaterSourcesBasicDataVm>();
-
-            Random rnd = new Random();
-
+            
             foreach (var water in waters)
             {
                 WaterSourcesBasicDataVm vm = new WaterSourcesBasicDataVm
@@ -26,24 +24,55 @@
                     Name = water.Name,
                     WaterSourceType = water.WaterSourceType,
                     Location = water.Location,
+                    IsSafeToDrink = water.IsSafeToDrink,
                     LandmarkName = "City",
                     LandmarkCountry = "Country",
-                    DistanceFromSearchLocation = 1.4M+rnd.Next(1,10)
                 };
-
-                //vm.Location.Latitude = water.Location.Latitude;
-                //vm.Location.Longtitude = water.Location.Longtitude;
-                //vm.Location.Altitude = water.Location.Altitude;
-
                 vms.Add(vm);
             }
 
-            var ovms = vms.OrderBy(v => v.DistanceFromSearchLocation);
-            // IEnumerable<WaterSourcesBasicDataVm> vms = Mapper.Map<IEnumerable<WaterSource>, IEnumerable<WaterSourcesBasicDataVm>>(waters);
+            var ovms = vms.OrderBy(v => v.WaterSourceType.Id).ThenBy(v=>v.LandmarkCountry);
 
             return ovms;
         }
 
+        public IEnumerable<WaterSourcesBasicDataVm> GetClosest10(Geolocation searchLocation)
+        {
+            IEnumerable<WaterSource> waters = this.Context.WaterSources;
+            
+            HashSet<WaterSourcesBasicDataVm> vms = new HashSet<WaterSourcesBasicDataVm>();
+            
+            foreach (var water in waters)
+            {
+                WaterSourcesBasicDataVm vm = new WaterSourcesBasicDataVm
+                {
+                    Id = water.Id,
+                    Name = water.Name,
+                    WaterSourceType = water.WaterSourceType,
+                    Location = water.Location,
+                    IsSafeToDrink = water.IsSafeToDrink,
+                    LandmarkName = "City",
+                    LandmarkCountry = "Country",
+                    DistanceFromSearchLocation = this.CalculateDistance(water, searchLocation)
+                };
+
+                vms.Add(vm);
+            }
+
+            var ovms = vms.OrderBy(v => v.DistanceFromSearchLocation).Take(10);
+           
+            return ovms;
+        }
+
+        private decimal CalculateDistance(WaterSource water, Geolocation searchLocation)
+        {
+            Random rnd = new Random();
+
+            return rnd.Next(1, 100);
+        }
+
+
+        //helpers
 
         public WaterSourcesAdminDataVm GetWsAdminData(int id)
         {
