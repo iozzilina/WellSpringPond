@@ -30,8 +30,9 @@
                 <h3>Recently added</h3>
                  @Html.Action("Recent", "WaterSource")
 
-                 @Html.ActionLink("Add New", "Create","WaterSource",new {}, new {@class = "btn btn-info"})
-                @*<button type="button" class="btn btn-info">Add New</button>*@
+                 @Html.ActionLink("Quick Add New", "QuickAdd","WaterSource",new {}, new {@class = "btn btn-info"})
+                 @Html.ActionLink("Add New with Details", "DetailAdd", "WaterSource", new { }, new { @class = "btn btn-info" })
+                 @*<button type="button" class="btn btn-info">Add New</button>*@
             </div>
         </div>
 

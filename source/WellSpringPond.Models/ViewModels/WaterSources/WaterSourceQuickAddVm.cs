@@ -1,19 +1,18 @@
-﻿namespace WellSpringPond.Models.BindingModels
+﻿namespace WellSpringPond.Models.ViewModels.WaterSources
 {
-    using WellSpringPond.Models.EntityModels;
+    using System.Collections.Generic;
 
-    public class WaterSourceQuickAddBm
+    public class WaterSourceQuickAddVm
     {
         public string Name { get; set; }
 
         public string Type { get; set; }
-
+        
         public decimal Latitude { get; set; }
-
         public decimal Longitude { get; set; }
 
         public bool IsDrinkable { get; set; }
 
-        public string author { get; set; }
-    }
+        public List<string> WaterTypesDropDown { get; set;}
+     }
 }

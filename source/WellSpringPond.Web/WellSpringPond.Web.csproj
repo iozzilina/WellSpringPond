@@ -191,6 +191,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WaterSourceController.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -298,6 +299,7 @@
     <Content Include="Views\Shared\Unauthorized.cshtml" />
     <Content Include="Views\WaterSource\ShortList.cshtml" />
     <Content Include="Views\WaterSource\Recent.cshtml" />
+    <Content Include="Views\WaterSource\QuickAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WellSpringPond.Data\WellSpringPond.Data.csproj">

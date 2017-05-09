@@ -2,6 +2,7 @@
 namespace WellSpringPond.Services
 {
     using System.Collections.Generic;
+    using System.Linq;
     using WellSpringPond.Models.EntityModels;
     using WellSpringPond.Models.ViewModels.Users;
 
@@ -24,6 +25,12 @@ namespace WellSpringPond.Services
             }
 
             return vms;
+        }
+
+        public ApplicationUser GetUserByUserName(string name)
+        {
+            ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == name);
+            return user;
         }
     }
 }

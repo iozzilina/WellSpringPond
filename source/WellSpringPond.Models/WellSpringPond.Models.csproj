@@ -125,6 +125,7 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Users\AdminUserBasicDataVm.cs" />
+    <Compile Include="ViewModels\WaterSources\WaterSourceQuickAddVm.cs" />
     <Compile Include="ViewModels\WaterSources\WaterSourcesAdminDataVm.cs" />
     <Compile Include="ViewModels\WaterSources\WaterSourcesPublicDataVm.cs" />
     <Compile Include="ViewModels\WaterSources\WaterSourcesBasicDataVm.cs" />

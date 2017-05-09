@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using WellSpringPond.Models.BindingModels;
     using WellSpringPond.Models.EntityModels;
     using WellSpringPond.Models.ViewModels.WaterSources;
     using WellSpringPond.Services;
@@ -60,24 +62,26 @@
         [Route("quick-add")]
         public ActionResult QuickAdd()
         {
-            return View();
-        }
+            WaterSourceQuickAddVm vm = new WaterSourceQuickAddVm();
+            vm.WaterTypesDropDown = this.waterService.GetDropDownListForWaterTypes();
 
+            return this.View(vm);
+        }
+        
         // POST: WaterSource/Create
         [HttpPost]
         [Route("quick-add")]
-        public ActionResult QuickAdd(FormCollection collection)
+        public ActionResult QuickAdd([Bind(Include = "Name,Type,Latitude,Longitude,IsDrinkable")] WaterSourceQuickAddBm bind)
         {
-            try
+            if (this.ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                bind.author = this.User.Identity.GetUserName();
+                this.waterService.QuickAddWaterSource(bind);
 
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index", "Home");
             }
-            catch
-            {
-                return View();
-            }
+
+            return this.View();
         }
 
         // GET: WaterSource/Edit/5
