@@ -12,7 +12,7 @@ namespace WellSpringPond.Models.EntityModels
 
         public DateTime Date {get;set;}
 
-        public ApplicationUser Author { get; set; }
+        public virtual ApplicationUser Author { get; set; }
 
         [ForeignKey("WaterSource")]
         public int WaterSourceId { get; set; }

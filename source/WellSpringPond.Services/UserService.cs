@@ -3,11 +3,13 @@ namespace WellSpringPond.Services
 {
     using System.Collections.Generic;
     using System.Linq;
+    using AutoMapper;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using WellSpringPond.Models.EntityModels;
     using WellSpringPond.Models.ViewModels.Users;
 
-    public class UserService : Service
-    {
+    public class UserService : Service{
         
         public IEnumerable<AdminUserBasicDataVm> GetAllUserForAdminList()
         {
@@ -20,7 +22,7 @@ namespace WellSpringPond.Services
                 vms.Add(new AdminUserBasicDataVm()
                 {
                     Username = applicationUser.UserName,
-                    Role = "not sure how to fetch this yet"
+                    Role = "not sure how to fetch this yet" // Role manager.... i forgot.
                 });
             }
 
@@ -32,5 +34,7 @@ namespace WellSpringPond.Services
             ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == name);
             return user;
         }
+
+       
     }
 }

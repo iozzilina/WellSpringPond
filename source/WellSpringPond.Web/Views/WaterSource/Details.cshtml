@@ -1,0 +1,142 @@
+﻿@using Microsoft.AspNet.Identity
+@using WellSpringPond.Models.EntityModels
+@using WellSpringPond.Web.Extensions
+@model WellSpringPond.Models.ViewModels.WaterSources.WaterSourcesDetailDataVm
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#objectDetail">Object Detail</button>
+    <div id="objectDetail" class="well well-sm collapse in">
+        <div class="row">
+            <!--details row-->
+            <div id="infoTable" class="col-sm-6 col-lg-6">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>@Html.DisplayFor(model => model.Id) @Html.DisplayFor(model => model.Name)</th>
+                        <th>Lat: @Html.DisplayFor(model => model.Location.Latitude), Long:@Html.DisplayFor(model => model.Location.Longtitude)</th>
+                        <th>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole(RoleNames.ROLE_ADMINISTRATOR))
+                            {
+                                @Html.ActionLink("Admin Edit", "Edit", "WaterSource",new {Area="Administration"}, new {id = Model.Id})
+                            }
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Mineral Spring with Tap</td>
+                        <td>Near @Html.DisplayFor(model => model.LandmarkName), @Html.DisplayFor(model => model.LandmarkCountry)</td>
+                        <td>@Html.DisplayNameFor(model => model.IsSafeToDrink) : @Html.DisplayFor(model => model.IsSafeToDrink)</td>
+                    </tr>
+                    <tr>
+                        <td>Availability:</td>
+                        <td colspan="2">
+                            <span class="@Model.Availability.Jan">@Html.DisplayNameFor(model => model.Availability.Jan)</span>,
+                            <span class="@Model.Availability.Feb">@Html.DisplayNameFor(model => model.Availability.Feb)</span>,
+                            <span class="@Model.Availability.Mar">@Html.DisplayNameFor(model => model.Availability.Mar)</span>,
+                            <span class="@Model.Availability.Apr">@Html.DisplayNameFor(model => model.Availability.Apr)</span>,
+                            <span class="@Model.Availability.May">@Html.DisplayNameFor(model => model.Availability.May)</span>,
+                            <span class="@Model.Availability.Jun">@Html.DisplayNameFor(model => model.Availability.Jun)</span>,
+                            <span class="@Model.Availability.Jul">@Html.DisplayNameFor(model => model.Availability.Jul)</span>,
+                            <span class="@Model.Availability.Aug">@Html.DisplayNameFor(model => model.Availability.Aug)</span>,
+                            <span class="@Model.Availability.Sep">@Html.DisplayNameFor(model => model.Availability.Sep)</span>,
+                            <span class="@Model.Availability.Oct">@Html.DisplayNameFor(model => model.Availability.Oct)</span>,
+                            <span class="@Model.Availability.Nov">@Html.DisplayNameFor(model => model.Availability.Nov)</span>,
+                            <span class="@Model.Availability.Dec">@Html.DisplayNameFor(model => model.Availability.Dec)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Temperature):</td>
+                        <td colspan="2">@Html.DisplayFor(model => model.Temperature) C</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.MineralContent):</td>
+                        <td colspan="2">@Html.DisplayFor(model => model.MineralContent)</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <p>@Html.DisplayNameFor(model => model.Description):</p>
+                            <p>@Html.DisplayFor(model => model.Description)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Added by @Model.CreationEdit.Author.UserName on @Model.CreationEdit.Date</td>
+                    </tr>
+                        @if (Model.CreationEdit.Id != Model.LastUpdate.Id)
+                        {
+                            <tr>
+                                <td colspan="3">Last updated by @Model.LastUpdate.Author.UserName on @Model.LastUpdate.Date</td>
+                            </tr>
+                        }
+                   
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="photos" class="col-sm-6 col-lg-6">
+                @Html.Image(Model.ImageUrl,"picture", "class=\"img-responsive img-rounded\"")
+                @*<img src="./images/objects/cheshma01.jpeg" class="img-responsive img-rounded">*@
+                <p class="alert alert-default">Today is MM-DD-YYYY. Can you fill your canteen today? Y N</p>
+
+            </div>
+        </div>
+        <!--details row-->
+
+        <div class="row">
+            <!--comments row-->
+            <div id="comments" class="col-sm-12 col-lg-12">
+                @if (Model.Comments.Count == 0)
+                {
+                    <p>No Comments yet</p>
+                }
+                else
+                {
+                    <p>There are @Model.Comments.Count comments</p>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th colspan="5">Comments: </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var comment in Model.Comments)
+                        {
+                            <tr>
+                                <td>@comment.Author</td>
+                                <td>@comment.CommentText</td>
+                                <td>@comment.DatePosted</td>
+                                @if (User.Identity.GetUserName() == comment.Author)
+                                {
+                                    <td>
+                                        @Html.ActionLink("Edit","CommentDelete","WaterSource", new {id = comment.Id})
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Delete", "CommentEdit", "WaterSource", new { id = comment.Id })
+                                    </td>
+                                }
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                }
+                @*@Html.Action("AddComment", "WaterSource", new { id = Model.Id }))*@
+            </div>
+
+        </div>
+        <!--comments row-->
+
+    </div>
+
+<!--container 2-->
+
+<p>
+    @Html.ActionLink("Edit", "Edit","WaterSource", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index", "Home")
+</p>

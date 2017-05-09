@@ -124,10 +124,12 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Comments\CommentVm.cs" />
     <Compile Include="ViewModels\Users\AdminUserBasicDataVm.cs" />
+    <Compile Include="ViewModels\WaterSources\WaterSourceDetailAddVm.cs" />
     <Compile Include="ViewModels\WaterSources\WaterSourceQuickAddVm.cs" />
     <Compile Include="ViewModels\WaterSources\WaterSourcesAdminDataVm.cs" />
-    <Compile Include="ViewModels\WaterSources\WaterSourcesPublicDataVm.cs" />
+    <Compile Include="ViewModels\WaterSources\WaterSourcesDetailDataVm.cs" />
     <Compile Include="ViewModels\WaterSources\WaterSourcesBasicDataVm.cs" />
   </ItemGroup>
   <ItemGroup>

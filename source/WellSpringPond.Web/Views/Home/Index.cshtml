@@ -4,51 +4,53 @@
 
 @Html.Partial("_UnknownVisitorPartial")
 
-    <div class="row">
-        <div class="col-sm-6 col-lg-6">
-            <!-- table of 10 closest points to you or a user-given location -->
+<div class="row">
+    <div class="col-sm-6 col-lg-6">
+        <!-- table of 10 closest points to you or a user-given location -->
 
-            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#closest">Search by location</button>
-            <div id="closest" class="well well-sm collapse in">
-                <span class="navbar-brand"><strong>Water near:</strong> </span>
-                <div>
-                    <form class="navbar-form navbar-right">
-                        <input type="button" class="btn btn-default" id="myLocationBtn" value="My Location">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="or enter location name">
-                        </div>
-                        <input type="button" class="btn btn-default" id="SearchLocationBtn" value="Go">
-                    </form>
-                </div>
-                <div>
-                    @Html.Action("ShortList", "WaterSource")
-                </div>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#closest">Search by location</button>
+        <div id="closest" class="well well-sm collapse in">
+            <span class="navbar-brand"><strong>Water near:</strong> </span>
+            <div>
+                <form class="navbar-form navbar-right">
+                    <input type="button" class="btn btn-default" id="myLocationBtn" value="My Location">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="or enter location name">
+                    </div>
+                    <input type="button" class="btn btn-default" id="SearchLocationBtn" value="Go">
+                </form>
             </div>
-
-            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recent">Recently added</button>
-            <div id="recent" class="well well-sm collapse in">
-                <h3>Recently added</h3>
-                 @Html.Action("Recent", "WaterSource")
-
-                 @Html.ActionLink("Quick Add New", "QuickAdd","WaterSource",new {}, new {@class = "btn btn-info"})
-                 @Html.ActionLink("Add New with Details", "DetailAdd", "WaterSource", new { }, new { @class = "btn btn-info" })
-                 @*<button type="button" class="btn btn-info">Add New</button>*@
+            <div>
+                @Html.Action("ShortList", "WaterSource")
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-6">
-            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mainMap">Map</button>
-            <div id="mainMap" class="well well-sm collapse in"></div>
-            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mapLegend">Map Legend</button>
-            <div id="mapLegend" class="well well-sm collapse in">
-                <table class="table">
-                    <thead>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recent">Recently added</button>
+        <div id="recent" class="well well-sm collapse in">
+            <h3>Recently added</h3>
+            @Html.Action("Recent", "WaterSource")
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Quick Add New", "QuickAdd", "WaterSource", new { }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Add New with Details", "DetailAdd", "WaterSource", new { }, new { @class = "btn btn-info" })
+            }
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-6">
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mainMap">Map</button>
+        <div id="mainMap" class="well well-sm collapse in"></div>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mapLegend">Map Legend</button>
+        <div id="mapLegend" class="well well-sm collapse in">
+            <table class="table">
+                <thead>
                     <tr>
                         <th colspan="4">Legend: </th>
                     </tr>
-                    </thead>
+                </thead>
 
-                    <tbody>
+                <tbody>
                     <tr>
                         <td>Icon</td>
                         <td>Free-flowing stream</td>
@@ -67,9 +69,9 @@
                         <td>Icon</td>
                         <td>Municipal Water</td>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
-    <!--row-->
+</div>
+<!--row-->

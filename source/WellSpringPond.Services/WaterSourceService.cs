@@ -1,13 +1,11 @@
 ﻿namespace WellSpringPond.Services
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web.Mvc;
-    using AutoMapper;
     using WellSpringPond.Models.BindingModels;
     using WellSpringPond.Models.EntityModels;
+    using WellSpringPond.Models.ViewModels.Comments;
     using WellSpringPond.Models.ViewModels.WaterSources;
 
     public class WaterSourceService : Service
@@ -27,8 +25,8 @@
                     WaterSourceType = water.WaterSourceType,
                     Location = water.Location,
                     IsSafeToDrink = water.IsSafeToDrink,
-                    LandmarkName = "City",
-                    LandmarkCountry = "Country",
+                    LandmarkName = this.GetLandmarkName(water),
+                    LandmarkCountry = this.GetLandmarkCountry(water),
                 };
                 vms.Add(vm);
             }
@@ -36,6 +34,107 @@
             var ovms = vms.OrderBy(v => v.WaterSourceType.Id).ThenBy(v=>v.LandmarkCountry);
 
             return ovms;
+        }
+
+        public WaterSourcesDetailDataVm GetWsDetailData(int id)
+        {
+            WaterSource water = this.Context.WaterSources.FirstOrDefault(ws => ws.Id == id);
+            
+            if (water != null)
+            {
+                WaterSourcesDetailDataVm vm = new WaterSourcesDetailDataVm()
+                {
+                    //this is the wrong id. should be the listing number of the marker on the map, if one exists.
+                    Id = water.Id,
+                    Name = water.Name,
+                    Location = water.Location,
+                    WaterSourceType = water.WaterSourceType,
+                    LandmarkName = this.GetLandmarkName(water),
+                    LandmarkCountry = this.GetLandmarkCountry(water),
+                    IsSafeToDrink = water.IsSafeToDrink,
+                    Availability = water.Availability,
+                    Temperature = water.Temperature,
+                    MineralContent = water.MineralContent,
+                    Description = water.Description,
+                    CreationEdit = this.GetOldestEdit(water),
+                    LastUpdate = this.GetNewestEdit(water),
+                    ImageUrl = water.ImageUrl,
+                    Comments = this.GetComments(water)
+                }; 
+                return vm;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private List<CommentVm> GetComments(WaterSource water)
+        {
+            //IEnumerable<CommentVm> waterComments = this.Context.Comments
+            //    .Where(w => w.WaterSource == water)
+            //    .Include("Users")
+            //    .OrderByDescending(d => d.DatePosted).Select(c => new CommentVm()
+            //    {
+            //        Id = c.Id,
+            //        Author = c.Author.UserName,
+            //        DatePosted = c.DatePosted,
+            //        CommentText = c.CommentText
+            //    });
+
+            //List<CommentVm> vms = waterComments.ToList();
+
+            var waterSource = this.Context.WaterSources.FirstOrDefault(w => w.Id == water.Id);
+            List<CommentVm> vms = new List<CommentVm>();
+            if (waterSource != null)
+            {
+                IEnumerable<Comment> comments = waterSource.Comments;
+                foreach (var comment in comments)
+                {
+                       vms.Add(new CommentVm()
+                        {
+                            Id = comment.Id,
+                            Author = comment.Author.UserName,
+                            DatePosted = comment.DatePosted,
+                            CommentText = comment.CommentText
+                        });
+                }
+            }
+            return vms;
+        }
+
+        
+        private WaterSourceEdit GetNewestEdit(WaterSource water)
+        {
+            var waterSource = this.Context.WaterSources.FirstOrDefault(w => w.Id == water.Id);
+            if (waterSource != null)
+            {
+                IEnumerable<WaterSourceEdit> edits = waterSource.Edits;
+
+                WaterSourceEdit newest = edits.OrderByDescending(e => e.Date).FirstOrDefault();
+                return newest;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    
+
+        private WaterSourceEdit GetOldestEdit(WaterSource water)
+        {
+            var waterSource = this.Context.WaterSources.FirstOrDefault(w=>w.Id == water.Id);
+            if (waterSource != null)
+            {
+                IEnumerable<WaterSourceEdit> edits = waterSource.Edits;
+
+                WaterSourceEdit oldest = edits.OrderBy(e => e.Date).FirstOrDefault();
+                return oldest;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public IEnumerable<WaterSourcesBasicDataVm> GetClosest10(Geolocation searchLocation)
@@ -53,8 +152,8 @@
                     WaterSourceType = water.WaterSourceType,
                     Location = water.Location,
                     IsSafeToDrink = water.IsSafeToDrink,
-                    LandmarkName = "City",
-                    LandmarkCountry = "Country",
+                    LandmarkName = this.GetLandmarkName(water),
+                    LandmarkCountry = this.GetLandmarkCountry(water),
                     DistanceFromSearchLocation = this.CalculateDistance(water, searchLocation)
                 };
 
@@ -81,8 +180,8 @@
                     WaterSourceType = water.WaterSourceType,
                     Location = water.Location,
                     IsSafeToDrink = water.IsSafeToDrink,
-                    LandmarkName = "City",
-                    LandmarkCountry = "Country",
+                    LandmarkName = this.GetLandmarkName(water),
+                    LandmarkCountry = this.GetLandmarkCountry(water),
                     LastEditDate = RecentEditDate(water)
                 };
 
@@ -186,7 +285,17 @@
 
             return rnd.Next(1, 100);
         }
-        
+
+        private string GetLandmarkName(WaterSource water)
+        {
+            return "City";
+        }
+
+        private string GetLandmarkCountry(WaterSource water)
+        {
+            return "Country";
+        }
+
         public Availability DefautAvailability()
         {
             Availability defautAvailability =
@@ -208,5 +317,6 @@
 
             return defautAvailability;
         }
+        
     }
 }

@@ -5,6 +5,7 @@
     using Microsoft.AspNet.Identity;
     using WellSpringPond.Models.BindingModels;
     using WellSpringPond.Models.EntityModels;
+    using WellSpringPond.Models.ViewModels.Comments;
     using WellSpringPond.Models.ViewModels.WaterSources;
     using WellSpringPond.Services;
 
@@ -54,7 +55,13 @@
         [Route("details/{id}")]
         public ActionResult Details(int id)
         {
-            return View();
+            WaterSourcesDetailDataVm vm = this.waterService.GetWsDetailData(id);
+
+            if (vm == null)
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+            return this.View(vm);
         }
 
 
@@ -83,6 +90,21 @@
 
             return this.View();
         }
+
+        // GET: WaterSource/Create
+        [Route("AddComment/{watersouceId}")]
+        public ActionResult AddComment(int watersouceId)
+        {
+            CommentVm vm = new CommentVm();
+            
+            
+            return this.PartialView(vm);
+        }
+
+
+
+
+
 
         // GET: WaterSource/Edit/5
         public ActionResult Edit(int id)

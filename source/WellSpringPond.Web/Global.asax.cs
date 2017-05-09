@@ -31,7 +31,7 @@ namespace WellSpringPond.Web
                 expression.CreateMap<WaterSource, WaterSourcesBasicDataVm>();
                 //expression.CreateMap<IEnumerable<WaterSource>, IEnumerable<WaterSourcesBasicDataVm>>();
                 expression.CreateMap<WaterSource, WaterSourcesAdminDataVm>();
-                expression.CreateMap<WaterSource, WaterSourcesPublicDataVm>();
+                expression.CreateMap<WaterSource, WaterSourcesDetailDataVm>();
             });
         }
     }

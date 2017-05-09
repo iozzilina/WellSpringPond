@@ -20,8 +20,6 @@
         public string LandmarkName { get; set; }
         public string LandmarkCountry{ get; set; }
 
-
-
         //eventually get from Google API
         public decimal DistanceFromSearchLocation { get; set; }
     }
