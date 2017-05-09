@@ -44,7 +44,8 @@
         [Route("recent")]
         public ActionResult Recent()
         {
-            return View();
+            IEnumerable<WaterSourcesBasicDataVm> vms = this.waterService.GetRecent5();
+            return this.PartialView(vms);
         }
 
 

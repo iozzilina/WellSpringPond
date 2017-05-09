@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WellSpringPond.Models.ViewModels.WaterSources.WaterSourcesBasicDataVm>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WaterSourceType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSafeToDrink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Near
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.WaterSourceType.DisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSafeToDrink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.Latitude)<br/>@Html.DisplayFor(modelItem => item.Location.Longtitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LandmarkName), @Html.DisplayFor(modelItem => item.LandmarkCountry)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

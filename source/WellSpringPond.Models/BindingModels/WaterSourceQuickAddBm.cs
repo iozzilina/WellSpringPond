@@ -2,7 +2,7 @@
 {
     using WellSpringPond.Models.EntityModels;
 
-    class WaterSourceShortCreateBm
+    class WaterSourceQuickAddBm
     {
         public string Name { get; set; }
 

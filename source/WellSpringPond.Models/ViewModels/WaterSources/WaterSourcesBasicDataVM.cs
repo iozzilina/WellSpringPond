@@ -1,5 +1,6 @@
 ﻿namespace WellSpringPond.Models.ViewModels.WaterSources
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using WellSpringPond.Models.EntityModels;
 
@@ -25,5 +26,8 @@
 
         [Display(Name = "Drinkable")]
         public bool IsSafeToDrink { get; set; }
+
+        [Display(Name = "Last Edit Date")]
+        public DateTime LastEditDate { get; set; }
     }
 }

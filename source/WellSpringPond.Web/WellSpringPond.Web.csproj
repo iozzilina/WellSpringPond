@@ -297,6 +297,7 @@
     <Content Include="Scripts\wsp.gmap.js" />
     <Content Include="Views\Shared\Unauthorized.cshtml" />
     <Content Include="Views\WaterSource\ShortList.cshtml" />
+    <Content Include="Views\WaterSource\Recent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WellSpringPond.Data\WellSpringPond.Data.csproj">

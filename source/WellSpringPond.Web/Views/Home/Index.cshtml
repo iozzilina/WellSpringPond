@@ -28,43 +28,10 @@
             <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recent">Recently added</button>
             <div id="recent" class="well well-sm collapse in">
                 <h3>Recently added</h3>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Coordinates</th>
-                        <th>Name</th>
-                        <th>Near Landmark</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Spring with Tap</td>
-                        <td><a href="#">55.628861, 44.423000</a></td>
-                        <td>Popova Cheshma</td>
-                        <td>Gelemenovo, BG</td>
-                    </tr>
-                    <tr>
-                        <td>Spring with Tap</td>
-                        <td><a href="#">55.628861, 44.423000</a></td>
-                        <td>Popova Cheshma</td>
-                        <td>Gelemenovo, BG</td>
-                    </tr>
-                    <tr>
-                        <td>Spring with Tap</td>
-                        <td><a href="#">55.628861, 44.423000</a></td>
-                        <td>Popova Cheshma</td>
-                        <td>Gelemenovo, BG</td>
-                    </tr>
-                    <tr>
-                        <td>Spring with Tap</td>
-                        <td><a href="#">55.628861, 44.423000</a></td>
-                        <td>Popova Cheshma</td>
-                        <td>Gelemenovo, BG</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-info">Add New</button>
+                 @Html.Action("Recent", "WaterSource")
+
+                 @Html.ActionLink("Add New", "Create","WaterSource",new {}, new {@class = "btn btn-info"})
+                @*<button type="button" class="btn btn-info">Add New</button>*@
             </div>
         </div>
 

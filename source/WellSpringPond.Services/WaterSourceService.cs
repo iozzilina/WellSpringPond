@@ -95,5 +95,51 @@
             return vm;
 
         }
+
+        public IEnumerable<WaterSourcesBasicDataVm> GetRecent5()
+        {
+            IEnumerable<WaterSource> waters = this.Context.WaterSources;
+
+            HashSet<WaterSourcesBasicDataVm> vms = new HashSet<WaterSourcesBasicDataVm>();
+
+            foreach (var water in waters)
+            {
+                WaterSourcesBasicDataVm vm = new WaterSourcesBasicDataVm
+                {
+                    Id = water.Id,
+                    Name = water.Name,
+                    WaterSourceType = water.WaterSourceType,
+                    Location = water.Location,
+                    IsSafeToDrink = water.IsSafeToDrink,
+                    LandmarkName = "City",
+                    LandmarkCountry = "Country",
+                    LastEditDate = RecentEditDate(water)
+                };
+
+                vms.Add(vm);
+            }
+
+            var rvms = vms.OrderBy(v => v.LastEditDate).Take(5);
+
+            return rvms;
+        }
+
+        private static DateTime RecentEditDate(WaterSource water)
+        {
+            DateTime lastEditDate;
+
+            var waterSourceEdit = water.Edits.OrderByDescending(e => e.Date).FirstOrDefault();
+            if (waterSourceEdit != null)
+            {
+                lastEditDate = waterSourceEdit.Date;
+            }
+
+            else
+            {
+                lastEditDate = DateTime.Now;
+            }
+            
+            return lastEditDate;
+        }
     }
 }
