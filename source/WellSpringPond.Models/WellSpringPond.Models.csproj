@@ -94,8 +94,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingModels\CommentAddBm.cs" />
+    <Compile Include="BindingModels\WaterSourceDetailAddBm.cs" />
     <Compile Include="BindingModels\WaterSourceQuickAddBm.cs" />
-    <Compile Include="BindingModels\WaterSourceModEditBM.cs" />
+    <Compile Include="BindingModels\WaterSourceModeratorEditBM.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Availability.cs" />
     <Compile Include="EntityModels\Comment.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Comments\CommentAddVm.cs" />
     <Compile Include="ViewModels\Comments\CommentVm.cs" />
     <Compile Include="ViewModels\Users\AdminUserBasicDataVm.cs" />
     <Compile Include="ViewModels\WaterSources\WaterSourceDetailAddVm.cs" />

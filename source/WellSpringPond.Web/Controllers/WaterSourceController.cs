@@ -1,6 +1,7 @@
 ﻿namespace WellSpringPond.Web.Controllers
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
     using WellSpringPond.Models.BindingModels;
@@ -91,19 +92,56 @@
             return this.View();
         }
 
-        // GET: WaterSource/Create
-        [Route("AddComment/{watersouceId}")]
+         //GET: WaterSource/CommentAdd{id}
+        [Route("commentAdd/{watersouceId}")]
         public ActionResult AddComment(int watersouceId)
         {
-            CommentVm vm = new CommentVm();
-            
-            
-            return this.PartialView(vm);
+            CommentAddVm vm = new CommentAddVm();
+            vm.WsId = watersouceId;
+
+            return this.View(vm);
+        }
+
+        // POST: Test/Comments/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("commentAdd/{watersouceId}")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CommentAdd([Bind(Include = "Id,WsId,CommentText,DatePosted")] CommentAddBm bind)
+        {
+            if (ModelState.IsValid)
+            {
+                bind.Author= this.User.Identity.GetUserName();
+                this.waterService.CommentAdd(bind);
+                return this.RedirectToAction("Details","WaterSource",new {id = bind.WsID});
+            }
+
+            return RedirectToAction("Details", "WaterSource", new { id = bind.WsID });
         }
 
 
 
 
+
+
+
+        // GET: WaterSource/commentDelete{id}
+        [Route("commentDelete/{commentId}")]
+        public ActionResult CommentDelete(int commentId)
+        {
+            CommentVm vm = new CommentVm();
+            return this.RedirectToAction("Index", "Home");
+        }
+
+
+        // GET: WaterSource/CommentEdit{id}
+        [Route("commentEdit/{commentId}")]
+        public ActionResult CommentEdit(int commentId)
+        {
+            CommentVm vm = new CommentVm();
+            return this.RedirectToAction("Index", "Home");
+        }
 
 
         // GET: WaterSource/Edit/5
@@ -127,27 +165,6 @@
                 return View();
             }
         }
-
-        // GET: WaterSource/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: WaterSource/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
     }
 }

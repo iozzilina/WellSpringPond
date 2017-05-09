@@ -246,6 +246,21 @@
             this.Context.SaveChanges();
         }
 
+        public void CommentAdd(CommentAddBm bind)
+        {
+            Comment comment = new Comment();
+            WaterSource ws = this.Context.WaterSources.FirstOrDefault(w=>w.Id == bind.WsID);
+            ApplicationUser user = this.Context.Users.FirstOrDefault(u => u.UserName == bind.Author);
+
+            comment.WaterSource = ws;
+            comment.Author = user;
+            comment.CommentText = bind.CommentText;
+            comment.DatePosted = DateTime.Now;
+
+            this.Context.Comments.Add(comment);
+            this.Context.SaveChanges();
+        }
+
        //helpers
 
         private static DateTime RecentEditDate(WaterSource water)
@@ -317,6 +332,7 @@
 
             return defautAvailability;
         }
-        
+
+       
     }
 }

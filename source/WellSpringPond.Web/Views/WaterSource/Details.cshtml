@@ -126,7 +126,7 @@
                         </tbody>
                     </table>
                 }
-                @*@Html.Action("AddComment", "WaterSource", new { id = Model.Id }))*@
+                @Html.ActionLink("Add a comment","CommentAdd", new { id = Model.Id })
             </div>
 
         </div>
