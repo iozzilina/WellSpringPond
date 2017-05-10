@@ -1,6 +1,7 @@
 ﻿namespace WellSpringPond.Web.Controllers
 {
     using System.Collections.Generic;
+    using System.Net;
     using System.Threading.Tasks;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
@@ -93,11 +94,10 @@
         }
 
          //GET: WaterSource/CommentAdd{id}
-        [Route("commentAdd/{watersouceId}")]
-        public ActionResult AddComment(int watersouceId)
+        [Route("commentAdd/{id}")]
+        public ActionResult CommentAdd(int id)
         {
-            CommentAddVm vm = new CommentAddVm();
-            vm.WsId = watersouceId;
+            CommentAddVm vm = new CommentAddVm {WsId = id};
 
             return this.View(vm);
         }
@@ -105,10 +105,10 @@
         // POST: Test/Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Route("commentAdd/{watersouceId}")]
+        [Route("commentAdd/{id}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CommentAdd([Bind(Include = "Id,WsId,CommentText,DatePosted")] CommentAddBm bind)
+        public ActionResult CommentAdd([Bind(Include = "Id,WsId,CommentText,DatePosted")] CommentAddBm bind)
         {
             if (ModelState.IsValid)
             {
@@ -121,19 +121,44 @@
         }
 
 
-
-
-
-
-
-        // GET: WaterSource/commentDelete{id}
-        [Route("commentDelete/{commentId}")]
-        public ActionResult CommentDelete(int commentId)
+        // GET: waters/1/commentdelete/5
+        [HttpGet]
+        [Route("{wsId}/commentDelete/{cId}")]
+        public ActionResult CommentDelete(int wsId,int? cId)
         {
-            CommentVm vm = new CommentVm();
-            return this.RedirectToAction("Index", "Home");
-        }
+            if (cId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
+            Comment comment = this.waterService.GetComment(cId);
+
+            if (comment == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            CommentAddVm vm = new CommentAddVm
+            {
+                WsId = wsId,
+                Id = (int)cId,
+                CommentText = comment.CommentText
+            };
+
+            return this.View(vm);
+       }
+
+        //POST: waters/1/commentdelete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("{wsId}/commentDelete/{cId}")]
+        public ActionResult CommentDeleteConfirmed(int wsId, int cId)
+        {
+            this.waterService.CommentDelete(cId);
+
+            return RedirectToAction("Details", "WaterSource", new { id = wsId });
+        }
+        
 
         // GET: WaterSource/CommentEdit{id}
         [Route("commentEdit/{commentId}")]
@@ -144,27 +169,27 @@
         }
 
 
-        // GET: WaterSource/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //// GET: WaterSource/Edit/5
+        //public ActionResult Edit(int id)
+        //{
+        //    return View();
+        //}
 
-        // POST: WaterSource/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+        //// POST: WaterSource/Edit/5
+        //[HttpPost]
+        //public ActionResult Edit(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
        
     }
 }

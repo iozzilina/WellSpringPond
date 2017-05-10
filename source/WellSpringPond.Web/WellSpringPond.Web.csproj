@@ -307,7 +307,9 @@
     <Content Include="Views\WaterSource\Recent.cshtml" />
     <Content Include="Views\WaterSource\QuickAdd.cshtml" />
     <Content Include="Views\WaterSource\Details.cshtml" />
-    <Content Include="Views\WaterSource\AddComment.cshtml" />
+    <Content Include="Views\WaterSource\CommentAdd.cshtml" />
+    <Content Include="Views\WaterSource\CommentEdit.cshtml" />
+    <Content Include="Views\WaterSource\CommentDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WellSpringPond.Data\WellSpringPond.Data.csproj">

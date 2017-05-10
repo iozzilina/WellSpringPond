@@ -113,10 +113,10 @@
                                 @if (User.Identity.GetUserName() == comment.Author)
                                 {
                                     <td>
-                                        @Html.ActionLink("Edit","CommentDelete","WaterSource", new {id = comment.Id})
+                                        @Html.ActionLink("Edit","CommentEdit","WaterSource", new {cId = comment.Id,wsId=Model.Id})
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Delete", "CommentEdit", "WaterSource", new { id = comment.Id })
+                                        @Html.ActionLink("Delete", "CommentDelete", "WaterSource", new {cId = comment.Id, wsId = Model.Id })
                                     </td>
                                 }
                                 <td> </td>
@@ -128,7 +128,6 @@
                 }
                 @Html.ActionLink("Add a comment","CommentAdd", new { id = Model.Id })
             </div>
-
         </div>
         <!--comments row-->
 

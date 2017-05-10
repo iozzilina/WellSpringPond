@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using WellSpringPond.Models.BindingModels;
     using WellSpringPond.Models.EntityModels;
     using WellSpringPond.Models.ViewModels.Comments;
@@ -71,24 +72,11 @@
 
         private List<CommentVm> GetComments(WaterSource water)
         {
-            //IEnumerable<CommentVm> waterComments = this.Context.Comments
-            //    .Where(w => w.WaterSource == water)
-            //    .Include("Users")
-            //    .OrderByDescending(d => d.DatePosted).Select(c => new CommentVm()
-            //    {
-            //        Id = c.Id,
-            //        Author = c.Author.UserName,
-            //        DatePosted = c.DatePosted,
-            //        CommentText = c.CommentText
-            //    });
-
-            //List<CommentVm> vms = waterComments.ToList();
-
             var waterSource = this.Context.WaterSources.FirstOrDefault(w => w.Id == water.Id);
             List<CommentVm> vms = new List<CommentVm>();
             if (waterSource != null)
             {
-                IEnumerable<Comment> comments = waterSource.Comments;
+                IEnumerable<Comment> comments = waterSource.Comments.Where(c=>c.IsDeleted==false);
                 foreach (var comment in comments)
                 {
                        vms.Add(new CommentVm()
@@ -188,7 +176,7 @@
                 vms.Add(vm);
             }
 
-            var rvms = vms.OrderBy(v => v.LastEditDate).Take(5);
+            var rvms = vms.OrderByDescending(v => v.LastEditDate).Take(5);
 
             return rvms;
         }
@@ -261,6 +249,16 @@
             this.Context.SaveChanges();
         }
 
+        public void CommentDelete(int cId)
+        {
+            Comment comment = this.Context.Comments.Find(cId);
+
+            if (comment != null)
+            {
+                comment.IsDeleted = true;
+                this.Context.SaveChanges();
+            }
+        }
        //helpers
 
         private static DateTime RecentEditDate(WaterSource water)
@@ -333,6 +331,11 @@
             return defautAvailability;
         }
 
-       
+        
+        public Comment GetComment(int? cId)
+        {
+            Comment comment = this.Context.Comments.Find(cId);
+            return comment;
+        }
     }
 }
