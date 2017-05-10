@@ -17,12 +17,10 @@
     {
 
         private WaterSourceService waterService;
-        private UserService userService;
 
         public WaterSourceController()
         {
             this.waterService = new WaterSourceService();
-            this.userService = new UserService();
         }
 
         // GET: WaterSource
@@ -54,7 +52,7 @@
         }
 
 
-        [Route("details/{id}")]
+        [Route("details/{id:int:min(1)}")]
         public ActionResult Details(int id)
         {
             WaterSourcesDetailDataVm vm = this.waterService.GetWsDetailData(id);
